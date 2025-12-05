@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Агрегатор погоды — Yandex API</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Агрегатор погоды</h1>
+      <p class="subtitle">Выберите город — данные берутся с Yandex Weather API</p>
+    </header>
+
+    <main>
+      <div class="controls">
+        <label for="city">Город</label>
+        <select id="city">
+          <option value="55.7558,37.6173">Москва</option>
+          <option value="59.9343,30.3351">Санкт-Петербург</option>
+          <option value="56.8389,60.6057">Екатеринбург</option>
+          <option value="55.0415,82.9346">Новосибирск</option>
+          <option value="43.5855,39.7231">Сочи</option>
+          <option value="53.1959,50.1000">Самара</option>
+          <option value="47.2357,39.7015">Ростов-на-Дону</option>
+        </select>
+
+        <div class="opts">
+          <label class="opt"><input type="checkbox" id="hours" /> Почасовой</label>
+          <label class="opt"><input type="checkbox" id="extra" /> Доп. данные</label>
+          <label class="opt">Дней: <input id="limit" type="number" min="1" max="10" value="3" step="1" /></label>
+        </div>
+
+        <button id="update">Показать погоду</button>
+      </div>
+
+      <section id="weather" class="card hidden">
+        <div class="location">
+          <h2 id="place">—</h2>
+          <div id="time">—</div>
+        </div>
+
+        <div class="now">
+          <div class="temp">
+            <div id="temp-val">—°C</div>
+            <div id="cond">—</div>
+          </div>
+          <div class="icon" id="icon">🌦️</div>
+        </div>
+
+        <div class="details">
+          <div>Ощущается: <span id="feels">—°C</span></div>
+          <div>Влажность: <span id="humidity">—%</span></div>
+          <div>Ветер: <span id="wind">— м/с</span></div>
+        </div>
+
+        <div class="meta card-sm" id="meta">
+          <h3>Информация о локации</h3>
+          <div id="meta-geo">—</div>
+          <div id="meta-info">—</div>
+        </div>
+
+        <div class="forecasts card-sm hidden" id="forecasts">
+          <h3>Дневные прогнозы</h3>
+          <div id="forecasts-list"></div>
+        </div>
+
+        <div class="hours card-sm hidden" id="hours-panel">
+          <h3>Почасовой прогноз</h3>
+          <div id="hours-list"></div>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+      </section>
+
+      <footer class="hint">
+        <small>Данные предоставлены Yandex Weather API</small>
+      </footer>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
